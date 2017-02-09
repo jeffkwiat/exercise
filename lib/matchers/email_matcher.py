@@ -15,8 +15,11 @@ class EmailMatcher(Matcher):
         :param record: a typical row in the input file.
         :return: a list of values pertaining to the matching columns
         '''
+        results = []
+        for index in self.matching_columns:
+            if record[index] != '':
+                results.append(record[index])
 
-        return tuple([record[index] for index in self.matching_columns \
-                      if record[index] != ''])
+        return tuple(results)
 
 
